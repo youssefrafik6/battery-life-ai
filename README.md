@@ -1,7 +1,5 @@
 # BatteryLife AI
 
-**Predict, Simulate, and Understand Smartphone Battery Life.**
-
 BatteryLife AI models Android battery drain from telemetry and integrates
 the predicted rate into charge trajectories. Explore usage scenarios in a
 seven-page Streamlit dashboard or call the same prediction engine through
@@ -11,7 +9,7 @@ FastAPI. Everything runs locally on CPU.
 
 ## Verified evaluation
 
-The extension used **1,554 eligible intervals across five Android devices**.
+The benchmark used **1,554 eligible intervals across five Android devices**.
 Outer folds held out one entire device at a time. Drain errors are averaged
 equally across devices. The SoC column is the median trajectory MAE across
 198 contiguous held-out sequences.
@@ -38,8 +36,7 @@ The original **2026 COMAP MCM Problem A** report by **Youssef Rafik and
 Lucas Carreno** reported a 4.82 pp median sequence MAE and full-charge
 streaming estimates of 7.86 h on Wi-Fi and 6.90 h on mobile. Those figures
 came from the contest methodology. Direct improvement claims require
-matching its evaluation population and protocol. This repository is a
-later software engineering extension by **Youssef Rafik**.
+matching its evaluation population and protocol.
 See [the historical research summary](docs/original_research.md).
 
 ## Architecture
