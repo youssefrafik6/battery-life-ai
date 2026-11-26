@@ -117,7 +117,7 @@ class Engine:
         bootstrap = [model.predict(frame)[0] for model in self.bundle["bootstrap"]]
         empty = time_to_empty(start, rate)
         horizon = min(empty if empty is not None and empty > 0 else 24, 72)
-        path = trajectory(start, [horizon], [rate])
+        path = trajectory(start, [horizon], [rate], include_crossing=True)
         if empty is not None and empty <= horizon:
             path["empty_hours"] = empty
         return {
@@ -137,7 +137,7 @@ class Engine:
         rows = pd.concat([item.frame() for item in request.segments], ignore_index=True)
         rates = self.model.predict(rows)
         hours = np.array([item.minutes / 60 for item in request.segments])
-        path = trajectory(request.start_soc, hours, rates)
+        path = trajectory(request.start_soc, hours, rates, include_crossing=True)
         residuals = self.bundle["residuals"]
         rng = np.random.default_rng(self.bundle["seed"])
         # Use a shared percentile across all segments as a persistent-error scenario.
