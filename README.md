@@ -174,8 +174,7 @@ docker compose config --quiet
 
 The stack uses Python, pandas, NumPy, Pydantic, scikit-learn, optional
 XGBoost, Altair, Streamlit, FastAPI, Docker, pytest, Ruff, and GitHub Actions.
-See [verification notes](docs/verification.md) and
-[resume materials](docs/resume_bullets.md).
+See the [verification notes](docs/verification.md).
 
 ## Limits and future work
 
