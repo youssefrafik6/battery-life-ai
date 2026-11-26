@@ -11,6 +11,9 @@ def test_constant_rate_and_physical_crossing():
     assert time_to_empty(75, 0) is None
     result = trajectory(75, [1 / 6, 8, 1], [12, 10, 0])
     assert result["soc"] == [75, 73, 0, 0]
+    result = trajectory(75, [1 / 6, 8, 1], [12, 10, 0], include_crossing=True)
+    assert result["soc"] == [75, 73, 0, 0, 0]
+    assert result["hours"][2] == pytest.approx(result["empty_hours"])
     assert result["empty_hours"] == pytest.approx(1 / 6 + 7.3)
 
 
