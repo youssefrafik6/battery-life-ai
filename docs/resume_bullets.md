@@ -1,4 +1,4 @@
-# BatteryLife AI · resume and interview notes
+# BatteryLife AI · Technical Highlights
 
 An end-to-end battery drain and state-of-charge simulation application
 built from the 2026 COMAP research of Youssef Rafik and Lucas Carreno.
@@ -6,7 +6,7 @@ built from the 2026 COMAP research of Youssef Rafik and Lucas Carreno.
 **Technologies** · Python, pandas, NumPy, scikit-learn, XGBoost, Pydantic,
 FastAPI, Streamlit, Altair, Docker, pytest, Ruff, GitHub Actions.
 
-## Resume bullets
+## Bullets
 
 - Built a reproducible telemetry pipeline that extracted 1,554 usable
   intervals from five Android device logs, with archive verification,
@@ -19,7 +19,7 @@ FastAPI, Streamlit, Altair, Docker, pytest, Ruff, GitHub Actions.
   share a continuous-time prediction engine, with multi-stage battery
   simulations, residual Monte Carlo ranges, and sequence bootstrap analysis.
 
-## Interview explanation
+## Explanation
 
 Battery charge is a state variable. A supervised model estimates the
 interval-average drain, and integrating that rate advances the charge.
