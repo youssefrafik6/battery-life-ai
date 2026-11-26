@@ -346,7 +346,7 @@ def main():
         st.markdown("## 🔋 BatteryLife AI")
         page = st.radio("Navigate", PAGES, label_visibility="collapsed")
         st.divider()
-        st.caption("2026 COMAP research extension")
+        st.caption("Android battery drain and charge simulation")
     report = read_json("evaluation.json")
     if page == "Overview":
         overview(report)
