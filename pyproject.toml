@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "battery-life-ai"
+version = "0.1.0"
+description = "Smartphone battery drain modeling and simulation"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.2,<3", "pandas>=2.2,<3", "scikit-learn>=1.6,<2",
+  "pydantic>=2.10,<3", "joblib>=1.4,<2", "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1", "streamlit>=1.44,<2", "altair>=5.5,<6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "httpx>=0.28,<1", "matplotlib>=3.10,<4"]
+xgb = ["xgboost>=2.1,<4"]
+
+[project.scripts]
+batterylife = "batterylife.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+
+[tool.ruff]
+line-length = 100

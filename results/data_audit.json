@@ -1,0 +1,109 @@
+{
+  "OnePlus_LE2113": {
+    "raw_rows": 1342,
+    "timestamp_rows": 506,
+    "interval_types": {
+      "Discharge": 328,
+      "Charging or gauge rise": 100,
+      "Invalid boundary": 35,
+      "Short interval": 33,
+      "Counter reset": 7,
+      "Large gap": 3
+    },
+    "flagged_high_drain": 1,
+    "observed_networks": {
+      "wi-fi": 447,
+      "mobile data": 45,
+      "desconocido": 8,
+      "0": 3,
+      "127": 1,
+      "542": 1,
+      "995": 1
+    }
+  },
+  "OnePlus_LE2123": {
+    "raw_rows": 1696,
+    "timestamp_rows": 1402,
+    "interval_types": {
+      "Invalid boundary": 529,
+      "Discharge": 529,
+      "Charging or gauge rise": 281,
+      "Short interval": 44,
+      "Counter reset": 17,
+      "Large gap": 2
+    },
+    "flagged_high_drain": 15,
+    "observed_networks": {
+      "wi-fi": 759,
+      "datos moviles": 271,
+      "0": 71,
+      "desconocido": 69,
+      "2261": 46,
+      "1960": 39,
+      "884": 27,
+      "1939": 6,
+      "290": 1,
+      "1824": 1,
+      "1866": 1,
+      "1932": 1,
+      "618": 1,
+      "2875": 1
+    }
+  },
+  "POCO_M2102J20SG": {
+    "raw_rows": 706,
+    "timestamp_rows": 376,
+    "interval_types": {
+      "Discharge": 224,
+      "Invalid boundary": 75,
+      "Charging or gauge rise": 47,
+      "Short interval": 23,
+      "Counter reset": 4,
+      "Large gap": 3
+    },
+    "flagged_high_drain": 4,
+    "observed_networks": {
+      "datos moviles": 341,
+      "desconocido": 25,
+      "wi-fi": 10
+    }
+  },
+  "Samsung_SM-A226B": {
+    "raw_rows": 121,
+    "timestamp_rows": 108,
+    "interval_types": {
+      "Discharge": 53,
+      "Invalid boundary": 35,
+      "Charging or gauge rise": 12,
+      "Short interval": 7,
+      "Large gap": 1
+    },
+    "flagged_high_drain": 0,
+    "observed_networks": {
+      "wi-fi": 79,
+      "datos moviles": 28
+    }
+  },
+  "Samsung_SM-G991B": {
+    "raw_rows": 932,
+    "timestamp_rows": 711,
+    "interval_types": {
+      "Discharge": 420,
+      "Invalid boundary": 178,
+      "Charging or gauge rise": 78,
+      "Short interval": 29,
+      "Counter reset": 3,
+      "Large gap": 3
+    },
+    "flagged_high_drain": 4,
+    "observed_networks": {
+      "wi-fi": 346,
+      "datos moviles": 162,
+      "5000": 51,
+      "4449": 50,
+      "5798": 42,
+      "1692": 15,
+      "1693": 11
+    }
+  }
+}

@@ -1,0 +1,20 @@
+x-app: &app
+  image: batterylife-ai:local
+  build: .
+  volumes:
+    - ./results:/app/results
+services:
+  api:
+    <<: *app
+    ports: ["127.0.0.1:8000:8000"]
+  dashboard:
+    <<: *app
+    command: ["streamlit", "run", "dashboard/app.py", "--server.address=0.0.0.0"]
+    ports: ["127.0.0.1:8501:8501"]
+  pipeline:
+    <<: *app
+    profiles: ["tools"]
+    volumes:
+      - ./data:/app/data
+      - ./results:/app/results
+    entrypoint: ["batterylife"]

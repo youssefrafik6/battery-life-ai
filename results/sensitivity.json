@@ -1,0 +1,87 @@
+{
+  "baseline": {
+    "mae": 4.569001775689841,
+    "rmse": 6.376961955871974,
+    "soc_median_mae": 2.106260862351073,
+    "soc_p90_mae": 6.48820899882003,
+    "sequences": 198,
+    "tte_paired_count": 0,
+    "tte_mae_hours": null,
+    "tte_censored_predictions": 0,
+    "training_intervals": 1554,
+    "full_charge_tte_hours": {
+      "Idle": 35.651652658400884,
+      "Browsing": 18.772645891768455,
+      "Streaming (Wi-Fi)": 10.91300803996394,
+      "Streaming (cellular)": 10.407601051272803
+    }
+  },
+  "min_600_seconds": {
+    "mae": 4.642439617964038,
+    "rmse": 6.510344310650938,
+    "soc_median_mae": 2.0069912224984146,
+    "soc_p90_mae": 6.505243986965921,
+    "sequences": 198,
+    "tte_paired_count": 0,
+    "tte_mae_hours": null,
+    "tte_censored_predictions": 0,
+    "training_intervals": 1294,
+    "full_charge_tte_hours": {
+      "Idle": 39.61838969092601,
+      "Browsing": 19.32190392593045,
+      "Streaming (Wi-Fi)": 10.933097698342804,
+      "Streaming (cellular)": 11.367628531995837
+    }
+  },
+  "cap_25": {
+    "mae": 4.538316320063669,
+    "rmse": 6.34562273586026,
+    "soc_median_mae": 2.0401569668297928,
+    "soc_p90_mae": 6.518398484976715,
+    "sequences": 198,
+    "tte_paired_count": 0,
+    "tte_mae_hours": null,
+    "tte_censored_predictions": 0,
+    "training_intervals": 1554,
+    "full_charge_tte_hours": {
+      "Idle": 35.397631244904595,
+      "Browsing": 18.713508514164104,
+      "Streaming (Wi-Fi)": 10.948716975169525,
+      "Streaming (cellular)": 10.537119433456095
+    }
+  },
+  "winsor_95": {
+    "mae": 4.41101226869889,
+    "rmse": 6.186277132032346,
+    "soc_median_mae": 1.868038939219518,
+    "soc_p90_mae": 5.761643793377364,
+    "sequences": 198,
+    "tte_paired_count": 0,
+    "tte_mae_hours": null,
+    "tte_censored_predictions": 0,
+    "training_intervals": 1554,
+    "full_charge_tte_hours": {
+      "Idle": 52.16730934673214,
+      "Browsing": 23.479539587729015,
+      "Streaming (Wi-Fi)": 10.640892075717058,
+      "Streaming (cellular)": 9.427670691275805
+    }
+  },
+  "without_network_type": {
+    "mae": 5.291404909338033,
+    "rmse": 7.013087783292723,
+    "soc_median_mae": 2.6088637895460134,
+    "soc_p90_mae": 8.004748135888617,
+    "sequences": 198,
+    "tte_paired_count": 0,
+    "tte_mae_hours": null,
+    "tte_censored_predictions": 0,
+    "training_intervals": 1554,
+    "full_charge_tte_hours": {
+      "Idle": 50.40592768549438,
+      "Browsing": 29.603584226516308,
+      "Streaming (Wi-Fi)": 14.051944678698712,
+      "Streaming (cellular)": 14.051944678698712
+    }
+  }
+}
