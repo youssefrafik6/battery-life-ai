@@ -21,6 +21,10 @@ simulation. Actual logged counter differences are retrospective covariates
 for validation. Evaluation therefore measures performance given realized
 usage, with future behavior supplied by the user in a forecast.
 
+### Reading a simulated discharge curve
+
+The target is observed battery-gauge change per hour. A what-if curve starts with a selected charge and applies a modeled drain rate to each user-defined interval. If the charge hits zero within an interval, the serving curve shows the crossing and remains flat at zero afterward. Held-out scoring samples the trajectory only at recorded observation times. The scenario assumes constant conditions within each segment.
+
 ## Evaluation populations
 
 Outer leave-one-device-out scores use raw observed drain. Inner grouped CV

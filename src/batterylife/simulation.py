@@ -12,7 +12,7 @@ def time_to_empty(start: float, rate: float) -> float | None:
     return 0.0 if start == 0 else (start / rate if rate else None)
 
 
-def trajectory(start: float, durations, rates) -> dict:
+def trajectory(start: float, durations, rates, *, include_crossing: bool = False) -> dict:
     """Integrate each segment and locate the first crossing of zero exactly."""
     empty = time_to_empty(start, 0)
     hours = [0.0]
@@ -23,8 +23,13 @@ def trajectory(start: float, durations, rates) -> dict:
             raise ValueError("Durations must be finite and positive")
         if empty is None and crossing is not None and crossing <= duration:
             empty = float(hours[-1] + crossing)
-        hours.append(float(hours[-1] + duration))
-        charges.append(float(max(0, charges[-1] - duration * rate)))
+        charge = float(max(0, charges[-1] - duration * rate))
+        end = float(hours[-1] + duration)
+        if include_crossing and crossing is not None and 0 < crossing < duration:
+            hours.append(float(hours[-1] + crossing))
+            charges.append(0.0)
+        hours.append(end)
+        charges.append(charge)
     return {"hours": hours, "soc": charges, "empty_hours": empty}
 
 
