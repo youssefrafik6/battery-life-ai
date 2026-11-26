@@ -2,7 +2,7 @@
 
 **Modeling Smartphone Battery Drain**, 2026 COMAP MCM Problem A, team 2633026,
 February 1, 2026. Original authors **Youssef Rafik and Lucas Carreno**.
-BatteryLife AI is a later software engineering extension by Youssef Rafik.
+See the [evaluation and simulation methodology](methodology.md) for the repository’s benchmark protocol.
 
 ## Objectives and data
 
