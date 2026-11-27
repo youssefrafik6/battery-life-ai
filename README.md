@@ -1,11 +1,11 @@
 # BatteryLife AI
 
-**Predict, Simulate, and Understand Smartphone Battery Life.**
-
 BatteryLife AI models Android battery drain from telemetry and integrates
 the predicted rate into charge trajectories. Explore usage scenarios in a
 seven-page Streamlit dashboard or call the same prediction engine through
 FastAPI. Everything runs locally on CPU.
+
+[Source code](https://github.com/youssefrafik6/battery-life-ai) · [Methodology](docs/methodology.md)
 
 ![BatteryLife AI overview](screenshots/overview.png)
 
@@ -174,8 +174,7 @@ docker compose config --quiet
 
 The stack uses Python, pandas, NumPy, Pydantic, scikit-learn, optional
 XGBoost, Altair, Streamlit, FastAPI, Docker, pytest, Ruff, and GitHub Actions.
-See [verification notes](docs/verification.md) and
-[resume materials](docs/resume_bullets.md).
+See [verification](docs/verification.md).
 
 ## Limits and future work
 
@@ -190,3 +189,7 @@ and incorporate battery-health measurements.
 
 The repository code is [MIT licensed](LICENSE). The original report and
 third-party dataset carry their own rights and attribution.
+
+## Author
+
+Youssef Rafik

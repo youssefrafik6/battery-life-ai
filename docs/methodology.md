@@ -62,3 +62,7 @@ These contrasts are associational and can evaluate unusual feature
 combinations. Permutation importance measures MAE changes within held-out
 devices. Device identity stays constant in each device fold, so this
 permutation cannot estimate between-device effects.
+
+## Device-held-out selection results
+
+The nested model-selection procedure recorded drain MAE of 4.38 percentage points per hour and median trajectory MAE of 1.75 percentage points across 198 discharge sequences. These results summarize the selection procedure across outer device folds.
