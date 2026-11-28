@@ -5,7 +5,7 @@ the predicted rate into charge trajectories. Explore usage scenarios in a
 seven-page Streamlit dashboard or call the same prediction engine through
 FastAPI. Everything runs locally on CPU.
 
-[Source code](https://github.com/youssefrafik6/battery-life-ai) · [Methodology](docs/methodology.md)
+[Live demo](https://battery-life-ai-6mq6c4rpbpiyrt3mqvuyhl.streamlit.app/) · [Source code](https://github.com/youssefrafik6/battery-life-ai) · [Methodology](docs/methodology.md)
 
 ![BatteryLife AI overview](screenshots/overview.png)
 
