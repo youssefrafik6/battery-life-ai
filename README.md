@@ -86,9 +86,9 @@ Based on User-Specific Application and Network Behaviour*, Daniel
 Flores-Martin, Sergio Laso Mangas, and Juan Luis Herrera (2024),
 [Zenodo DOI 10.5281/zenodo.13982080](https://doi.org/10.5281/zenodo.13982080),
 licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-The data is downloaded from the source. Raw logs, interval exports, and
-serialized estimators are excluded from version control. Evaluation and
-visualizations are derived from the original data with the changes documented above.
+The five source files are identified in [Data and attribution](data-attribution.md).
+The app ships a frozen serving model and a reduced explorer table with
+relative times. The original logs and full local interval exports stay local.
 
 ## Run locally
 
@@ -156,11 +156,11 @@ docker compose up -d api dashboard
 
 Services bind to localhost on ports 8000 and 8501. Compose persists
 `data/` and `results/` on the host. Stop with `docker compose down`.
-For Streamlit Community Cloud, select `dashboard/app.py` and Python 3.13.
-In Advanced settings → Secrets, add the top-level setting
-`BATTERYLIFE_CLOUD_SETUP = "1"`. On first launch, the app downloads, validates
-and trains into its working directory. The hosted setup uses the four core
-regressors. A new instance may need to regenerate artifacts.
+For Streamlit Community Cloud, deploy `dashboard/app.py` from `main`.
+The adjacent requirements file pins the serving estimator version. Predictions,
+simulations, and the explorer use bundled artifacts as soon as the app opens.
+Local training outputs take precedence, and `BATTERYLIFE_MODEL` can point to
+another trusted model file.
 [Community Cloud deployment guide](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy).
 
 ### Checks

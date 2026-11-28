@@ -16,14 +16,13 @@ CPU training and the versions in
 | Dashboard | All seven pages smoke-tested in Chrome with the trained artifact. Three screenshots captured |
 | API | Request validation and shared engine checked with pytest. All six endpoints exercised over HTTP in Docker |
 | Docker | Compose configuration parsed, arm64 image built and both services started. API and dashboard health checked |
-| Hosted setup | Fresh local checkout downloaded, trained the four core regressors and served predictions with Community Cloud setup enabled |
-| Publication contents | Staged filenames and common secret patterns screened. Raw data, interval CSV, model and environment files excluded |
+| Hosted setup | Community Cloud uses the bundled Random Forest and an explorer table with relative times. The dashboard test exercises all seven pages from a fresh checkout. |
+| Publication contents | Staged filenames and common secret patterns screened. Raw logs, full interval exports and environment files excluded. Only the serving model and reduced explorer table are bundled. |
 | Licensing | Official Zenodo metadata identifies CC BY 4.0. The extension includes the MIT license text and original research attribution |
 
 No eligible held-out discharge sequence ended in a recorded zero. Scenario
 estimates and empirical discharge-rate coverage were verified. Empirical
-time-to-empty accuracy remains unevaluated. Streamlit Community Cloud and
-GitHub Actions have yet to run against a published repository.
+time-to-empty accuracy remains unevaluated.
 
 ## Publish after approval
 

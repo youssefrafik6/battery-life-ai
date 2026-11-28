@@ -2,8 +2,6 @@
 
 import json
 import os
-import subprocess
-import sys
 from pathlib import Path
 
 import altair as alt
@@ -14,6 +12,7 @@ from batterylife.engine import PRESETS, Engine, Prediction, Schedule, Segment
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results"
+BUNDLED = ROOT / "dashboard" / "artifacts"
 PAGES = [
     "Overview",
     "Battery Life Predictor",
@@ -26,24 +25,17 @@ PAGES = [
 TEAL = "#42dec4"
 
 
-@st.cache_resource(show_spinner="Preparing the dataset and fitting the CPU models…")
-def initialize_cloud_model() -> None:
-    """Build local artifacts once per hosted process when enabled by the operator."""
-    environment = os.environ | {"OMP_NUM_THREADS": "1"}
-    commands = ("download", "prepare", "sensitivity", "train")
-    for command in commands:
-        subprocess.run(
-            [sys.executable, "-m", "batterylife.cli", command, "--config", "configs/default.json"],
-            cwd=ROOT,
-            env=environment,
-            check=True,
-            timeout=180,
-        )
+def model_path() -> Path:
+    configured = os.environ.get("BATTERYLIFE_MODEL")
+    if configured:
+        return Path(configured)
+    local = RESULTS / "model.joblib"
+    return local if local.is_file() else BUNDLED / "model.joblib"
 
 
 @st.cache_resource
-def load_engine():
-    return Engine.load()
+def load_engine(path: Path, modified: int):
+    return Engine.load(path)
 
 
 @st.cache_data
@@ -55,7 +47,10 @@ def read_json(name):
 @st.cache_data
 def read_intervals():
     path = RESULTS / "intervals.csv"
-    return pd.read_csv(path, parse_dates=["time"]) if path.exists() else pd.DataFrame()
+    if path.is_file():
+        return pd.read_csv(path, parse_dates=["time"])
+    bundled = BUNDLED / "explorer.csv.gz"
+    return pd.read_csv(bundled) if bundled.is_file() else pd.DataFrame()
 
 
 def hours_text(value):
@@ -270,14 +265,19 @@ def explorer():
     st.subheader("Charging and interval quality")
     st.dataframe(pd.crosstab(frame.device, frame.reason))
     st.subheader("State of charge over time")
+    time_axis = (
+        alt.X("elapsed_hours:Q", title="Hours since first observation on each device")
+        if "elapsed_hours" in frame
+        else alt.X("time:T", title="Observation time")
+    )
     chart = (
         alt.Chart(frame)
         .mark_circle(size=20)
         .encode(
-            x="time:T",
+            x=time_axis,
             y="soc:Q",
             color="device:N",
-            tooltip=["time:T", "soc:Q", "reason:N"],
+            tooltip=[time_axis.shorthand, "soc:Q", "reason:N"],
         )
         .properties(height=300)
         .interactive()
@@ -330,18 +330,6 @@ def uncertainty(engine, report):
 
 def main():
     st.set_page_config(page_title="BatteryLife AI", page_icon="🔋", layout="wide")
-    setup = os.environ.get("BATTERYLIFE_CLOUD_SETUP")
-    if setup is None:
-        try:
-            setup = st.secrets.get("BATTERYLIFE_CLOUD_SETUP")
-        except FileNotFoundError:
-            pass
-    if setup == "1" and not (RESULTS / "model.joblib").exists():
-        try:
-            initialize_cloud_model()
-        except (subprocess.SubprocessError, OSError):
-            st.error("Model setup failed. Check the application logs and retry.")
-            st.stop()
     with st.sidebar:
         st.markdown("## 🔋 BatteryLife AI")
         page = st.radio("Navigate", PAGES, label_visibility="collapsed")
@@ -360,7 +348,8 @@ def main():
         comparison(report)
     else:
         try:
-            engine = load_engine()
+            artifact = model_path()
+            engine = load_engine(artifact, artifact.stat().st_mtime_ns)
         except FileNotFoundError:
             st.info("Run the training pipeline to enable predictions and simulations.")
             return
